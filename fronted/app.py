@@ -13,9 +13,10 @@ if st.button("ASK AGENT"):
                       "question":question
                       
                       })
-    
-    data = res.json()
-    st.success(data["messages"][-1]["content"])
+    st.write(res.status_code)
+    st.write(res.text)
+    # data = res.json()
+    # st.success(data["messages"][-1]["content"])
    
   
     
