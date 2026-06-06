@@ -13,6 +13,7 @@ if st.button("ASK AGENT"):
                       "question":question
                       
                       })
+    st.write("URL:", base_url)
     st.write(res.status_code)
     st.write(res.text)
     # data = res.json()
