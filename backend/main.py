@@ -5,11 +5,9 @@ from langchain.tools import tool
 import os
 from dotenv import load_dotenv 
 import requests
-
-load_dotenv()
+load_dotenv()    
+     
 app=FastAPI()
-
-
 OPENWEATHER_API_KEY=os.getenv("OPENWEATHER_API_KEY")
 
 llm=ChatGroq(
