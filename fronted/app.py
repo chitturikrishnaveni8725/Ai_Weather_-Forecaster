@@ -23,7 +23,7 @@ question=st.text_input("Ask Your Weather Question")
 if st.button("ASK AGENT"):
     res = requests.post(
         f"{BASE_URL}/get_weather",
-        json={
+        params={
             "city": city,
             "question": question
         }
