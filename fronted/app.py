@@ -1,6 +1,6 @@
 import streamlit as st 
 import requests
-base_url="https://ai-weather-forecaster-1.onrender.com"
+base_url="https://ai-weather-forecaster-2.onrender.com"
 st.title("🌤️ AI Weather Forecaster")
 city=st.text_input("Enter City")
 question=st.text_input("Ask Your Weather Question")
