@@ -1,4 +1,4 @@
-from fastapi import FastAPI,Query
+from fastapi import FastAPI,Query, Body
 from langchain.agents import create_agent
 from langchain_groq import ChatGroq
 from langchain.tools import tool
@@ -37,31 +37,50 @@ agent=create_agent(
     tools=[get_temperature_details]
 )
 
+# @app.post("/get_weather")
+# def incoming_weather_params(
+#     city: str=Query(...),
+#     question: str=Query(...)
+#     ):
+#     result=agent.invoke({
+#         "messages":[{
+#             "role":"user",
+#             "content": f"""
+#             You are a friendly Weather AI Assistant.
+#             Always use the get_temperature_details tool to get real-time weather information before answering.
+#             User City: {city}
+#             User Question: {question}
+#             Provide:
+#             1. Current temperature in °C
+#             2. Weather condition
+#             3. Humidity
+#             4. Wind speed
+#             5. A short friendly summary
+#             Do not make up weather information.
+#             Only use data returned by the tool.
+#             """      
+#     }]
+#             })
+#     print(result)
+#     return result
 @app.post("/get_weather")
-def incoming_weather_params(
-    city: str=Query(...),
-    question: str=Query(...)
-    ):
-    result=agent.invoke({
-        "messages":[{
-            "role":"user",
+def incoming_weather_params(payload: dict = Body(...)):
+    city = payload["city"]
+    question = payload["question"]
+
+    result = agent.invoke({
+        "messages": [{
+            "role": "user",
             "content": f"""
-            You are a friendly Weather AI Assistant.
-            Always use the get_temperature_details tool to get real-time weather information before answering.
-            User City: {city}
-            User Question: {question}
-            Provide:
-            1. Current temperature in °C
-            2. Weather condition
-            3. Humidity
-            4. Wind speed
-            5. A short friendly summary
-            Do not make up weather information.
-            Only use data returned by the tool.
-            """      
-    }]
-            })
-    print(result)
+You are a friendly Weather AI Assistant.
+Use tool before answering.
+
+City: {city}
+Question: {question}
+"""
+        }]
+    })
+
     return result
            
             
