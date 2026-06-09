@@ -1,7 +1,7 @@
 import streamlit as st 
 import requests
-# BASE_URL="http://127.0.0.1:8000"
-BASE_URL ="https://ai-weather-forecaster-backend.onrender.com"
+BASE_URL="http://127.0.0.1:8000"
+# BASE_URL ="https://ai-weather-forecaster-backend.onrender.com"
 st.title("🌤️ AI Weather Forecaster")
 city=st.text_input("Enter City")
 question=st.text_input("Ask Your Weather Question")
@@ -14,14 +14,4 @@ if st.button("Ask Agent"):
     })
     
     st.write("STATUS:", res.status_code)
-    if res.status_code == 200:
-        try:
-            data = res.json()
-            st.success(data.get("response"))
-        except Exception:
-            st.error("Backend returned invalid JSON")
-        else:
-            st.error("Backend error")
-    # st.success(res.json()["response"])
-    # st.write(res.json())
-    # st.success(res.json()["messages"][-1]["content"])
+    st.success(res.json()["messages"][-1]["content"])

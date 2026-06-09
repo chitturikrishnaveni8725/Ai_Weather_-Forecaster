@@ -62,11 +62,9 @@ def incoming_weather_params(
             """      
     }]
             })
-    final_answer = result["messages"][-1].content
-
-    return {"response": final_answer}
-    # print(result)
-    # return result
+ 
+    print(result)
+    return result
  
             
     
