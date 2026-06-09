@@ -5,8 +5,9 @@ from langchain.tools import tool
 import os
 from dotenv import load_dotenv 
 import requests
+
 load_dotenv()    
-     
+    
 app=FastAPI()
 OPENWEATHER_API_KEY=os.getenv("OPENWEATHER_API_KEY")
 
@@ -16,7 +17,6 @@ llm=ChatGroq(
     api_key=os.getenv("GROQ_API_KEY")
 
 )
-
 
 @tool
 def get_temperature_details(city:str):
@@ -44,7 +44,7 @@ def incoming_weather_params(
     ):
     result=agent.invoke({
         "messages":[{
-            "role":"user",
+            "role":"user",     
             "content": f"""
             You are a friendly Weather AI Assistant.
             Always use the get_temperature_details tool to get real-time weather information before answering.
