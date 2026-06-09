@@ -1,6 +1,7 @@
 import streamlit as st 
 import requests
 BASE_URL="http://127.0.0.1:8000"
+# BASE_URL = "https://ai-weather-forecaster-backend.onrender.com"
 st.title("🌤️ AI Weather Forecaster")
 city=st.text_input("Enter City")
 question=st.text_input("Ask Your Weather Question")
