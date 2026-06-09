@@ -13,8 +13,19 @@ if st.button("Ask Agent"):
         "question":question
     })
     
+    # st.write("STATUS:", res.status_code)
     st.write("STATUS:", res.status_code)
-    st.success(res.json()["messages"][-1]["content"]) 
+    st.write("RAW RESPONSE:", res.text)  # IMPORTANT DEBUG
+
+    if res.status_code == 200:
+        try:
+            data = res.json()
+            st.success(data.get("response"))
+        except Exception:
+            st.error("Backend returned invalid JSON")
+    else:
+        st.error("Backend error")
+    # st.success(res.json()["messages"][-1]["content"]) 
     
     
     
