@@ -13,6 +13,4 @@ if st.button("Ask Agent"):
     })
     
     st.write("STATUS:", res.status_code)
-    st.write("RAW RESPONSE:", res.text)
-
-    # st.success(res.json()["messages"][-1]["content"])
+    st.success(res.json()["messages"][-1]["content"])

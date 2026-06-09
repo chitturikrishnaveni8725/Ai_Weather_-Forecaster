@@ -17,6 +17,7 @@ llm=ChatGroq(
     api_key=os.getenv("GROQ_API_KEY")
 
 )
+print("GROQ KEY =", os.getenv("GROQ_API_KEY"))
 
 @tool
 def get_temperature_details(city:str):
